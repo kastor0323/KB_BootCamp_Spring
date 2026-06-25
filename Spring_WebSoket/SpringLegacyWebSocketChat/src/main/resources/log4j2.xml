@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Log4j2 설정 파일
+
+    org.scoula 패키지는 DEBUG 이상,
+    Spring Framework는 INFO 이상,
+    그 외 로그는 INFO 이상을 출력합니다.
+-->
+<Configuration status="WARN">
+
+    <Appenders>
+
+        <!-- 콘솔 로그 출력 -->
+        <Console
+                name="console"
+                target="SYSTEM_OUT">
+
+            <!--
+                로그 출력 형식
+
+                예:
+                INFO  org.scoula.controller.HomeController(home:24)
+                - WebSocket 채팅 화면 요청
+            -->
+            <PatternLayout
+                    charset="UTF-8"
+                    pattern="%-5level %c(%M:%L) - %m%n"/>
+
+        </Console>
+
+    </Appenders>
+
+    <Loggers>
+
+        <!-- 프로젝트 패키지 로그 -->
+        <Logger
+                name="org.scoula"
+                level="DEBUG"
+                additivity="false">
+
+            <AppenderRef ref="console"/>
+
+        </Logger>
+
+        <!-- Spring Framework 로그 -->
+        <Logger
+                name="org.springframework"
+                level="INFO"
+                additivity="false">
+
+            <AppenderRef ref="console"/>
+
+        </Logger>
+
+        <!-- 기본 로그 레벨 -->
+        <Root level="INFO">
+
+            <AppenderRef ref="console"/>
+
+        </Root>
+
+    </Loggers>
+
+</Configuration>

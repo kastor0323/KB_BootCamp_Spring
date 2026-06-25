@@ -1,0 +1,178 @@
+plugins {
+    // Java 프로젝트
+    id 'java'
+
+    // Tomcat에 배포할 WAR 파일 생성
+    id 'war'
+}
+
+group = 'org.scoula'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    // 라이브러리 버전을 한 곳에서 관리합니다.
+    junitVersion = '5.10.3'
+    springVersion = '5.3.39'
+    lombokVersion = '1.18.34'
+    log4jVersion = '2.23.1'
+    jacksonVersion = '2.17.2'
+}
+
+java {
+    // Java 17 기준으로 컴파일합니다.
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+tasks.withType(JavaCompile).configureEach {
+    // Java 소스 파일의 한글 인코딩 설정
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+
+    /*
+     * =========================================================
+     * Spring Framework
+     * =========================================================
+     */
+
+    // Spring Core Container
+    // @Configuration, @Component, @Service, @Autowired 등을 제공합니다.
+    implementation "org.springframework:spring-context:${springVersion}"
+
+    // Spring MVC
+    // DispatcherServlet, Controller, JSP ViewResolver 등을 제공합니다.
+    implementation "org.springframework:spring-webmvc:${springVersion}"
+
+    /*
+     * Spring WebSocket
+     *
+     * WebSocket 연결, 핸드셰이크, 세션 관리,
+     * STOMP 엔드포인트 등록 기능을 제공합니다.
+     *
+     * 다음 클래스를 사용하기 위해 필요합니다.
+     * - EnableWebSocketMessageBroker
+     * - StompEndpointRegistry
+     * - WebSocketMessageBrokerConfigurer
+     */
+    implementation "org.springframework:spring-websocket:${springVersion}"
+
+    /*
+     * Spring Messaging
+     *
+     * STOMP 메시지 브로커와 메시지 매핑 기능을 제공합니다.
+     *
+     * 다음 클래스를 사용하기 위해 필요합니다.
+     * - MessageBrokerRegistry
+     * - @MessageMapping
+     * - @SendTo
+     */
+    implementation "org.springframework:spring-messaging:${springVersion}"
+
+    // @Inject 등 Java 표준 의존성 주입 애너테이션
+    implementation 'javax.inject:javax.inject:1'
+
+    /*
+     * =========================================================
+     * Servlet, JSP, WebSocket API
+     * =========================================================
+     *
+     * Tomcat 9는 javax 패키지를 사용합니다.
+     * Tomcat이 실행 시점에 제공하므로 compileOnly로 설정합니다.
+     */
+
+    // Servlet API
+    compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+
+    // JSP API
+    compileOnly 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.3'
+
+    // Java WebSocket API
+    // Tomcat 9에서 javax.websocket 패키지를 사용합니다.
+    compileOnly 'javax.websocket:javax.websocket-api:1.1'
+
+    // JSTL
+    implementation 'javax.servlet:jstl:1.2'
+
+    /*
+     * =========================================================
+     * JSON
+     * =========================================================
+     *
+     * 브라우저가 보낸 JSON 메시지를 Java 객체로 변환하고,
+     * Java 객체를 다시 JSON으로 변환합니다.
+     */
+
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+
+    /*
+     * =========================================================
+     * AOP
+     * =========================================================
+     */
+
+    implementation 'org.aspectj:aspectjrt:1.9.22.1'
+    implementation 'org.aspectj:aspectjweaver:1.9.22.1'
+
+    /*
+     * =========================================================
+     * Logging
+     * =========================================================
+     */
+
+    implementation "org.apache.logging.log4j:log4j-api:${log4jVersion}"
+    implementation "org.apache.logging.log4j:log4j-core:${log4jVersion}"
+
+    /*
+     * SLF4J를 사용하는 외부 라이브러리의 로그를
+     * Log4j2로 전달합니다.
+     */
+    implementation "org.apache.logging.log4j:log4j-slf4j-impl:${log4jVersion}"
+
+    /*
+     * =========================================================
+     * XML
+     * =========================================================
+     */
+
+    // XML 파일 내부의 한글 처리 지원
+    implementation 'xerces:xercesImpl:2.12.2'
+
+    /*
+     * =========================================================
+     * Lombok
+     * =========================================================
+     */
+
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    /*
+     * =========================================================
+     * Test
+     * =========================================================
+     */
+
+    // Spring Test
+    testImplementation "org.springframework:spring-test:${springVersion}"
+
+    // 테스트 코드용 Lombok
+    testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    // JUnit 5
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+
+    // Gradle에서 JUnit Platform 실행
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+}
