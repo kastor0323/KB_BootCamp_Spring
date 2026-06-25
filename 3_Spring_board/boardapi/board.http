@@ -1,0 +1,16 @@
+###
+GET http://localhost:8080/api/board/
+
+###
+GET http://localhost:8080/api/board/1
+
+###
+PUT http://localhost:8080/api/board/7
+Content-Type: application/json
+
+{
+  "no": 7,
+  "title" : "테스트 제목 yyyy",
+  "content" : "테스트 내용 zzzz",
+  "writer" : "user010"
+}

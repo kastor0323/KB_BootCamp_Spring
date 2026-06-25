@@ -1,0 +1,110 @@
+plugins {
+    // Java 프로젝트 기능을 사용합니다.
+    id 'java'
+
+    // Tomcat에 배포할 WAR 파일을 생성합니다.
+    id 'war'
+}
+
+group = 'org.scoula'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.10.3'
+    springVersion = '5.3.39'
+    lombokVersion = '1.18.34'
+    log4jVersion = '2.23.1'
+    jacksonVersion = '2.17.2'
+
+    // MyBatis 버전
+    mybatisVersion = '3.5.16'
+
+    // Spring과 MyBatis를 연동합니다.
+    mybatisSpringVersion = '2.1.2'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+// Java 소스 파일의 인코딩을 UTF-8로 설정합니다.
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    // Spring Core Container
+    implementation("org.springframework:spring-context:${springVersion}") {
+        exclude group: 'commons-logging',
+                module: 'commons-logging'
+    }
+
+    // Spring MVC
+    implementation "org.springframework:spring-webmvc:${springVersion}"
+
+    // Spring JDBC와 트랜잭션
+    implementation "org.springframework:spring-jdbc:${springVersion}"
+    implementation "org.springframework:spring-tx:${springVersion}"
+
+    // 의존성 주입 표준 애너테이션
+    implementation 'javax.inject:javax.inject:1'
+
+    // Java 17에서 @PostConstruct를 사용하기 위해 필요합니다.
+    implementation 'javax.annotation:javax.annotation-api:1.3.2'
+
+    // AOP
+    implementation 'org.aspectj:aspectjrt:1.9.22.1'
+    implementation 'org.aspectj:aspectjweaver:1.9.22.1'
+
+    // Servlet, JSP, JSTL
+    compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+    compileOnly 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.3'
+    implementation 'javax.servlet:jstl:1.2'
+
+    // Log4j2
+    implementation "org.apache.logging.log4j:log4j-api:${log4jVersion}"
+    implementation "org.apache.logging.log4j:log4j-core:${log4jVersion}"
+    implementation "org.apache.logging.log4j:log4j-slf4j-impl:${log4jVersion}"
+
+    // XML 내부 한글 처리
+    implementation 'xerces:xercesImpl:2.12.2'
+
+    // Lombok
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    // JSON 처리
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+
+    // MySQL JDBC Driver
+    implementation 'com.mysql:mysql-connector-j:8.1.0'
+
+    // HikariCP Connection Pool
+    implementation 'com.zaxxer:HikariCP:2.7.4'
+
+    // MyBatis
+    implementation "org.mybatis:mybatis:${mybatisVersion}"
+
+    // Spring과 MyBatis 연동
+    implementation "org.mybatis:mybatis-spring:${mybatisSpringVersion}"
+
+    // Spring Test
+    testImplementation "org.springframework:spring-test:${springVersion}"
+
+    // 테스트용 Lombok
+    testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    // JUnit 5
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+}
+
+test {
+    useJUnitPlatform()
+}

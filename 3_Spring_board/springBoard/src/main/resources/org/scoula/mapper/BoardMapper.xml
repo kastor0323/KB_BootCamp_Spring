@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.scoula.mapper.BoardMapper">
+    <!-- 게시글 컬럼과 BoardVO 필드를 연결합니다. -->
+    <resultMap
+            id="boardMap"
+            type="org.scoula.domain.BoardVO">
+
+        <id
+                property="bno"
+                column="bno"/>
+
+        <result
+                property="boardType"
+                column="board_type"/>
+
+        <result
+                property="title"
+                column="title"/>
+
+        <result
+                property="content"
+                column="content"/>
+
+        <result
+                property="writer"
+                column="writer"/>
+
+        <result
+                property="viewCount"
+                column="view_count"/>
+
+        <result
+                property="createdAt"
+                column="created_at"/>
+
+        <result
+                property="updatedAt"
+                column="updated_at"/>
+
+    </resultMap>
+
+    <!-- 첨부파일 컬럼과 AttachmentVO 필드를 연결합니다. -->
+    <resultMap
+            id="attachmentMap"
+            type="org.scoula.domain.AttachmentVO">
+
+        <id
+                property="ano"
+                column="ano"/>
+
+        <result
+                property="bno"
+                column="bno"/>
+
+        <result
+                property="originalName"
+                column="original_name"/>
+
+        <result
+                property="storedName"
+                column="stored_name"/>
+
+        <result
+                property="contentType"
+                column="content_type"/>
+
+        <result
+                property="fileSize"
+                column="file_size"/>
+
+        <result
+                property="imageFile"
+                column="image_file"/>
+
+        <result
+                property="createdAt"
+                column="created_at"/>
+
+    </resultMap>
+
+    <!-- 게시판 종류에 따른 목록을 조회합니다. -->
+    <select
+            id="getList"
+            resultMap="boardMap">
+
+        SELECT
+        bno,
+        board_type,
+        title,
+        content,
+        writer,
+        view_count,
+        created_at,
+        updated_at
+        FROM springBoard
+        WHERE board_type = #{boardType}
+        ORDER BY bno DESC
+
+    </select>
+
+    <!-- 게시글 한 건을 조회합니다. -->
+    <select
+            id="get"
+            resultMap="boardMap">
+
+        SELECT
+        bno,
+        board_type,
+        title,
+        content,
+        writer,
+        view_count,
+        created_at,
+        updated_at
+        FROM springBoard
+        WHERE bno = #{bno}
+
+    </select>
+
+    <!-- 게시글을 등록하고 자동 생성된 bno를 BoardVO에 저장합니다.
+    useGeneratedKeys="true" 뜻은 다음과 같습니다.
+
+    INSERT 후 데이터베이스가 자동으로 생성한 기본키 값을 가져오겠습니다.
+    여기에서 자동 생성된 기본키는 springBoard 테이블의 bno입니다.
+     -->
+    <insert
+            id="insert"
+            parameterType="org.scoula.domain.BoardVO"
+            useGeneratedKeys="true"
+            keyProperty="bno">
+
+        INSERT INTO springBoard (
+        board_type,
+        title,
+        content,
+        writer
+        )
+        VALUES (
+        #{boardType},
+        #{title},
+        #{content},
+        #{writer}
+        )
+
+    </insert>
+
+    <!-- 게시글을 수정합니다. -->
+    <update
+            id="update"
+            parameterType="org.scoula.domain.BoardVO">
+
+        UPDATE springBoard
+        SET
+        title = #{title},
+        content = #{content},
+        writer = #{writer}
+        WHERE bno = #{bno}
+
+    </update>
+
+    <!-- 게시글을 삭제합니다. -->
+    <delete id="delete">
+
+        DELETE FROM springBoard
+        WHERE bno = #{bno}
+
+    </delete>
+
+    <!-- 조회수를 증가시킵니다. -->
+    <update id="increaseViewCount">
+
+        UPDATE springBoard
+        SET view_count = view_count + 1
+        WHERE bno = #{bno}
+
+    </update>
+
+    <!-- 첨부파일 정보를 등록합니다. -->
+    <insert
+            id="insertAttachment"
+            parameterType="org.scoula.domain.AttachmentVO"
+            useGeneratedKeys="true"
+            keyProperty="ano">
+
+        INSERT INTO springBoardFile (
+        bno,
+        original_name,
+        stored_name,
+        content_type,
+        file_size,
+        image_file
+        )
+        VALUES (
+        #{bno},
+        #{originalName},
+        #{storedName},
+        #{contentType},
+        #{fileSize},
+        #{imageFile}
+        )
+
+    </insert>
+
+    <!-- 게시글의 첨부파일 목록을 조회합니다. -->
+    <select
+            id="getAttachments"
+            resultMap="attachmentMap">
+
+        SELECT
+        ano,
+        bno,
+        original_name,
+        stored_name,
+        content_type,
+        file_size,
+        image_file,
+        created_at
+        FROM springBoardFile
+        WHERE bno = #{bno}
+        ORDER BY ano ASC
+
+    </select>
+
+    <!-- 첨부파일 한 건을 조회합니다. -->
+    <select
+            id="getAttachment"
+            resultMap="attachmentMap">
+
+        SELECT
+        ano,
+        bno,
+        original_name,
+        stored_name,
+        content_type,
+        file_size,
+        image_file,
+        created_at
+        FROM springBoardFile
+        WHERE ano = #{ano}
+
+    </select>
+
+    <!-- 첨부파일 정보 한 건을 삭제합니다. -->
+    <delete id="deleteAttachment">
+
+        DELETE FROM springBoardFile
+        WHERE ano = #{ano}
+
+    </delete>
+
+    <!-- 게시글의 모든 첨부파일 정보를 삭제합니다. -->
+    <delete id="deleteAttachmentsByBno">
+
+        DELETE FROM springBoardFile
+        WHERE bno = #{bno}
+
+    </delete>
+</mapper>
