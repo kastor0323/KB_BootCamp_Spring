@@ -1,0 +1,83 @@
+:root {
+    --portal-dark: #172033;
+    --portal-primary: #3559e0;
+    --portal-soft: #eef2ff;
+}
+
+body {
+    min-height: 100vh;
+    background:
+            linear-gradient(
+                    135deg,
+                    #f8f9fa 0%,
+                    #eef2ff 100%
+            );
+}
+
+.portal-navbar {
+    background-color: var(--portal-dark);
+}
+
+.portal-brand-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 12px;
+
+    background-color: var(--portal-primary);
+    color: #ffffff;
+
+    font-weight: 700;
+}
+
+.portal-card {
+    border: 0;
+    border-radius: 20px;
+
+    box-shadow:
+            0 12px 35px rgba(30, 41, 59, 0.10);
+}
+
+.portal-icon-box {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 52px;
+    height: 52px;
+
+    border-radius: 16px;
+
+    background-color: var(--portal-soft);
+    color: var(--portal-primary);
+
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.login-panel {
+    width: 100%;
+    max-width: 460px;
+}
+
+.page-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.permission-card {
+    transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+}
+
+.permission-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+            0 14px 34px rgba(30, 41, 59, 0.12);
+}

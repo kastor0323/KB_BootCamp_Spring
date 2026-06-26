@@ -1,0 +1,161 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group = 'org.scoula'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.10.3'
+
+    springVersion = '5.3.39'
+    springSecurityVersion = '5.8.13'
+
+    lombokVersion = '1.18.34'
+    log4jVersion = '2.23.1'
+    jacksonVersion = '2.17.2'
+
+    mybatisVersion = '3.5.16'
+    mybatisSpringVersion = '2.1.2'
+
+    aspectjVersion = '1.9.22.1'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    /*
+     * Spring Framework
+     */
+
+    // Spring IoC 컨테이너
+    implementation("org.springframework:spring-context:${springVersion}") {
+        exclude group: 'commons-logging',
+                module: 'commons-logging'
+    }
+
+    // Spring MVC
+    implementation "org.springframework:spring-webmvc:${springVersion}"
+
+    // Spring JDBC
+    implementation "org.springframework:spring-jdbc:${springVersion}"
+
+    // Spring 트랜잭션
+    implementation "org.springframework:spring-tx:${springVersion}"
+
+    /*
+     * Spring Security
+     */
+
+    // 인증 및 인가 핵심 기능
+    implementation "org.springframework.security:spring-security-core:${springSecurityVersion}"
+
+    // Spring Security 웹 필터
+    implementation "org.springframework.security:spring-security-web:${springSecurityVersion}"
+
+    // Java Config 기반 보안 설정
+    implementation "org.springframework.security:spring-security-config:${springSecurityVersion}"
+
+    // JSP Security 태그
+    implementation "org.springframework.security:spring-security-taglibs:${springSecurityVersion}"
+
+    /*
+     * MyBatis
+     */
+
+    implementation "org.mybatis:mybatis:${mybatisVersion}"
+    implementation "org.mybatis:mybatis-spring:${mybatisSpringVersion}"
+
+    /*
+     * 표준 의존성 주입
+     */
+
+    implementation 'javax.inject:javax.inject:1'
+
+    /*
+     * AOP
+     */
+
+    implementation "org.aspectj:aspectjrt:${aspectjVersion}"
+    implementation "org.aspectj:aspectjweaver:${aspectjVersion}"
+
+    /*
+     * Servlet, JSP, JSTL
+     *
+     * Tomcat이 Servlet API와 JSP API를 제공하므로
+     * WAR 파일에 포함하지 않고 compileOnly로 설정합니다.
+     */
+
+    compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+    compileOnly 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.3'
+
+    implementation 'javax.servlet:jstl:1.2'
+
+    /*
+     * Log4j2
+     */
+
+    implementation "org.apache.logging.log4j:log4j-api:${log4jVersion}"
+    implementation "org.apache.logging.log4j:log4j-core:${log4jVersion}"
+
+    // SLF4J 로그를 Log4j2로 전달
+    implementation "org.apache.logging.log4j:log4j-slf4j-impl:${log4jVersion}"
+
+    /*
+     * XML 처리
+     */
+
+    implementation 'xerces:xercesImpl:2.12.2'
+
+    /*
+     * Lombok
+     */
+
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    /*
+     * JSON
+     */
+
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+
+    /*
+     * Database
+     */
+
+    // MySQL JDBC Driver
+    implementation 'com.mysql:mysql-connector-j:8.1.0'
+
+    // 커넥션 풀
+    implementation 'com.zaxxer:HikariCP:5.1.0'
+
+    /*
+     * Test
+     */
+
+    testImplementation "org.springframework:spring-test:${springVersion}"
+    testImplementation "org.springframework.security:spring-security-test:${springSecurityVersion}"
+
+    testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

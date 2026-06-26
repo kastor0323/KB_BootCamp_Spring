@@ -1,9 +1,16 @@
 package org.scoula.controller;
 
 import lombok.extern.log4j.Log4j2;
+import org.scoula.security.account.domain.CustomUser;
+import org.scoula.security.account.domain.MemberVO;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.security.Principal;
 
 @Controller
 @Log4j2
@@ -15,14 +22,21 @@ public class SecurityController {
         log.info("do all can access everybody");
     }
 
+//    @GetMapping("/member")
+//    public void doMember(Principal principal){
+//        log.info("username = " + principal.getName());
+//    }
+
     @GetMapping("/member")
-    public void doMember(){
-        log.info("login member");
+    public void doMember(Authentication authentication){
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        log.info("username = " + userDetails.getUsername());
     }
 
     @GetMapping("/admin")
-    public void doAdmin(){
-        log.info("admin only");
+    public void doAdmin(@AuthenticationPrincipal CustomUser customUser){
+        MemberVO member = new MemberVO();
+        log.info("username = " + member);
     }
 
     @GetMapping("/login")

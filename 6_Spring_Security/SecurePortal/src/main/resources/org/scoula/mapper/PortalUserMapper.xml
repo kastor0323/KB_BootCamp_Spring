@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.scoula.mapper.PortalUserMapper">
+
+    <!--
+        회원 한 명과 여러 권한을 함께 매핑합니다.
+
+        roles는 List<String>이므로
+        role_name 컬럼을 String 값으로 저장합니다.
+    -->
+    <resultMap
+            id="portalUserMap"
+            type="org.scoula.domain.PortalUserVO">
+
+        <id
+                property="userId"
+                column="user_id"/>
+
+        <result
+                property="password"
+                column="password"/>
+
+        <result
+                property="userName"
+                column="user_name"/>
+
+        <result
+                property="enabled"
+                column="enabled"/>
+
+        <result
+                property="createdAt"
+                column="created_at"/>
+
+        <collection
+                property="roles"
+                ofType="string"
+                notNullColumn="role_name">
+
+            <result column="role_name"/>
+
+        </collection>
+
+    </resultMap>
+
+    <select
+            id="findByUserId"
+            resultMap="portalUserMap">
+
+        SELECT
+        u.user_id,
+        u.password,
+        u.user_name,
+        u.enabled,
+        u.created_at,
+        r.role_name
+        FROM portal_user u
+        LEFT JOIN portal_user_role r
+        ON u.user_id = r.user_id
+        WHERE u.user_id = #{userId}
+        ORDER BY r.role_name
+
+    </select>
+
+</mapper>
