@@ -5,22 +5,108 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e832564f-45e1-4156-bd1c-01eddecf7fbe" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/secserver/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/secserver/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/secserver/database.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/secserver/src/main/java/org/scoula/security/account/domain/AuthVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/secserver/src/main/java/org/scoula/security/account/domain/CustomUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/secserver/src/main/java/org/scoula/security/account/domain/MemberVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/secserver/src/main/java/org/scoula/security/account/mapper/UserDetailsMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/secserver/src/main/java/org/scoula/security/service/CustomUserDetailsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/secserver/src/main/resources/org/scoula/security/account/mapper/UserDetailsMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/secserver/src/test/java/org/scoula/security/account/mapper/UserDetailsMapperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../3_Spring_board/boardapi/database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../3_Spring_board/boardapi/database.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/secserver/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/secserver/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/secserver/src/main/java/org/scoula/controller/SecurityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/secserver/src/main/java/org/scoula/controller/SecurityController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/secserver/src/main/java/org/scoula/security/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/secserver/src/main/java/org/scoula/security/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/secserver/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/secserver/src/main/resources/mybatis-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/secserver/src/main/webapp/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/secserver/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_jwtdemo/src/main/java/org/scoula/controller/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_jwtdemo/src/main/java/org/scoula/domain/MemberVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_jwtdemo/src/main/java/org/scoula/dto/LoginRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_jwtdemo/src/main/java/org/scoula/dto/LoginResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_jwtdemo/src/main/java/org/scoula/dto/UserResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_jwtdemo/src/main/java/org/scoula/init/MemberDataInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_jwtdemo/src/main/java/org/scoula/repository/MemberRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_jwtdemo/src/main/java/org/scoula/security/account/CustomUserDetailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_jwtdemo/src/main/java/org/scoula/security/account/CustomUserDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_jwtdemo/src/main/java/org/scoula/security/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_jwtdemo/src/main/java/org/scoula/security/config/SecurityInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_jwtdemo/src/main/java/org/scoula/security/jwt/JwtAuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_jwtdemo/src/main/java/org/scoula/security/jwt/JwtProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/.idea/description.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/.idea/project-template.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/.idea/sqldialects.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/.idea/template-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/database.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/src/main/java/org/scoula/config/RootConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/src/main/java/org/scoula/config/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/src/main/java/org/scoula/config/SecurityInitializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/src/main/java/org/scoula/config/ServletConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/src/main/java/org/scoula/config/WebConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/src/main/java/org/scoula/controller/AuthController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/src/main/java/org/scoula/controller/HomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/src/main/java/org/scoula/domain/PortalUserVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/src/main/java/org/scoula/exception/CommonExceptionAdvice.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/src/main/java/org/scoula/mapper/PortalUserMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/src/main/java/org/scoula/security/CustomUserDetailsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/src/main/resources/log4j2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/src/main/resources/org/scoula/mapper/PortalUserMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/src/main/webapp/WEB-INF/views/auth/admin.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/src/main/webapp/WEB-INF/views/auth/denied.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/src/main/webapp/WEB-INF/views/auth/login.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/src/main/webapp/WEB-INF/views/auth/member.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/src/main/webapp/WEB-INF/views/auth/public.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/src/main/webapp/WEB-INF/views/custom404.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/src/main/webapp/WEB-INF/views/error_page.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/src/main/webapp/WEB-INF/views/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/src/main/webapp/resources/css/common.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/src/test/java/org/scoula/mapper/PortalUserMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurePortal/src/test/java/org/scoula/security/PasswordEncoderTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/.idea/description.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/.idea/project-template.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/.idea/template-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/database.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/java/org/scoula/config/RootConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/java/org/scoula/config/ServletConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/java/org/scoula/config/WebConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/java/org/scoula/controller/HomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/java/org/scoula/controller/SecurityController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/java/org/scoula/exception/CommonExceptionAdvice.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/java/org/scoula/security/account/domain/AuthVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/java/org/scoula/security/account/domain/CustomUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/java/org/scoula/security/account/domain/MemberVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/java/org/scoula/security/account/mapper/UserDetailsMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/java/org/scoula/security/config/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/java/org/scoula/security/config/SecurityInitializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/java/org/scoula/security/service/CustomUserDetailsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/resources/log4j2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/resources/log4jdbc.log4j2.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/resources/mybatis-config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/resources/org/scoula/mapper/MapperTemplate.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/resources/org/scoula/security/account/mapper/UserDetailsMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/webapp/WEB-INF/views/custom404.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/webapp/WEB-INF/views/error_page.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/webapp/WEB-INF/views/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/webapp/WEB-INF/views/security/admin.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/webapp/WEB-INF/views/security/all.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/webapp/WEB-INF/views/security/login.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/webapp/WEB-INF/views/security/logout.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/main/webapp/WEB-INF/views/security/member.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/test/java/org/scoula/config/RootConfigTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/test/java/org/scoula/security/PasswordEncoderTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/secserver/src/test/java/org/scoula/security/account/mapper/UserDetailsMapperTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,16 +273,16 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Coding/WorkSpace/BootCamp/Spring/6_Spring_Security&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Coding/WorkSpace/BootCamp/Spring",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -214,6 +300,7 @@
       <option name="presentableId" value="Default" />
       <updated>1782450370991</updated>
       <workItem from="1782450372023" duration="90000" />
+      <workItem from="1782717320469" duration="20000" />
     </task>
     <servers />
   </component>
