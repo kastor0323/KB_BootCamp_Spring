@@ -22,7 +22,7 @@ public class SecurityController {
     public ResponseEntity<String> doAll(){
 
         log.info("do all can access everybody");
-        return ResponseEntity.ok("All can access evertbody");
+        return ResponseEntity.ok("All can access everybody");
     }
 
     @GetMapping("/member")

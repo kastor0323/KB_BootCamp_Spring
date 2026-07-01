@@ -11,3 +11,4 @@ CREATE TABLE tbl_board_attachment (
                                       CONSTRAINT FOREIGN KEY(bno) REFERENCES tbl_board(no)
 );
 
+``
